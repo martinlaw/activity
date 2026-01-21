@@ -6,27 +6,18 @@ B <- read_excel(here("data", "B.xlsx"))
 H <- read_excel(here("data", "H.xlsx"))
 P <- read_excel(here("data", "P.xlsx"))
 
-head(se)
-
-# ph, mh, belief, age
 # SE
-names(se)
 names(se)[names(se)=="Phusical"] <- "PH"
 names(se)[names(se)=="Mental"] <- "MH"
 # A
-names(A)
 # B
-names(B)
 B$Age <- NA
 # H
-names(H)
 names(H)[names(H)=="Physical"] <- "PH"
 names(H)[names(H)=="Mental"] <- "MH"
-H$Region <- NA
+H$Region <- "H"
 H$SES5 <- NA
 # P
-names(P)
-
 se_clean <- se[, c("Belief", "PH", "MH", "Region", "Smoker", "SES5", "Gender", "Age")]
 A_clean <- A[, c("Belief", "PH", "MH", "Region", "Smoker", "SES5", "Gender", "Age")]
 B_clean <- B[, c("Belief", "PH", "MH", "Region", "Smoker", "SES5", "Gender", "Age")]
