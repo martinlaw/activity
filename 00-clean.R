@@ -17,20 +17,21 @@ names(se)[names(se)=="Mental"] <- "MH"
 names(A)
 # B
 names(B)
+B$Age <- NA
 # H
 names(H)
 names(H)[names(H)=="Physical"] <- "PH"
 names(H)[names(H)=="Mental"] <- "MH"
 H$Region <- NA
+H$SES5 <- NA
 # P
 names(P)
 
-se_clean <- se[, c("Belief", "PH", "MH", "Region")]
-A_clean <- A[, c("Belief", "PH", "MH", "Region")]
-B_clean <- B[, c("Belief", "PH", "MH", "Region")]
-H_clean <- H[, c("Belief", "PH", "MH", "Region")]
-P_clean <- P[, c("Belief", "PH", "MH", "Region")]
-
+se_clean <- se[, c("Belief", "PH", "MH", "Region", "Smoker", "SES5", "Gender", "Age")]
+A_clean <- A[, c("Belief", "PH", "MH", "Region", "Smoker", "SES5", "Gender", "Age")]
+B_clean <- B[, c("Belief", "PH", "MH", "Region", "Smoker", "SES5", "Gender", "Age")]
+H_clean <- H[, c("Belief", "PH", "MH", "Region", "Smoker", "SES5", "Gender", "Age")]
+P_clean <- P[, c("Belief", "PH", "MH", "Region", "Smoker", "SES5", "Gender", "Age")]
 data <- rbind(se_clean, A_clean, B_clean, H_clean, P_clean)
 
 ### Cleaning
@@ -44,5 +45,18 @@ table(data$MH)
 data$MH[data$MH %in% c("No", "NO")] <- "N"
 data$MH[data$MH %in% c("Yes", "YES")] <- "Y"
 table(data$Region)
+# Smoker
+table(data$Smoker)
+data$Smoker[data$Smoker=="No"] <- "N"
+data$Smoker[data$Smoker=="Yes"] <- "Y"
+# SES5
+table(data$SES5)
+# Gender
+table(data$Gender)
+data$Gender[data$Gender %in% c("Female")] <- "F"
+data$Gender[data$Gender %in% c("Male")] <- "M"
+# Age
+data$Age <- as.numeric(data$Age)
+
 
 
