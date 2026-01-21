@@ -1,0 +1,24 @@
+---
+title: "Data dictionary"
+author: "SR White"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Dictionary
+
+```{r}
+NUM <- 1000
+EXAMPLE <- data.frame(Belief=factor(x=sample(c("Yes","No"),NUM,TRUE),levels=c("Yes","No"),labels=c("Y","N")),
+                      PH=factor(x=sample(c("Yes","No"),NUM,TRUE),levels=c("Yes","No"),labels=c("Y","N")),
+                      MH=factor(x=sample(c("Yes","No"),NUM,TRUE),levels=c("Yes","No"),labels=c("Y","N")),
+                      Region=factor(x=sample(c("A","B","H","P","K","Q","C","G","E","P","H"),NUM,TRUE))
+)
+
+
+```
+
