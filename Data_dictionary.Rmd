@@ -20,5 +20,11 @@ EXAMPLE <- data.frame(Belief=factor(x=sample(c("Yes","No"),NUM,TRUE),levels=c("Y
 )
 
 
+if( 0 ) {
+  ## THIS LINE IS ONLY NEEDED TO PUT A DUMMY FILE WHILE PARALLEL WRITING THE ANALYSIS FILE
+  ## EVENTUALLY THE 00-clean.R script will create the data_clean.rds object
+  saveRDS(EXAMPLE,file=here("data","data_clean.rds"))
+}
+
 ```
 
