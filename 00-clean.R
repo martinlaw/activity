@@ -58,5 +58,12 @@ data$Gender[data$Gender %in% c("Male")] <- "M"
 # Age
 data$Age <- as.numeric(data$Age)
 
+data$Region <- as.factor(data$Region)
+data$Smoker <- as.factor(data$Smoker)
+data$Belief <- as.factor(data$Belief)
+data$PH <- as.factor(data$PH)
+data$MH <- as.factor(data$MH)
+data$SES5 <- as.factor(data$SES5)
+data$Gender <- as.factor(data$Gender)
 
 
