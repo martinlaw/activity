@@ -1,0 +1,74 @@
+---
+title: "Data dictionary"
+author: "SR White"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("here")
+library("knitr")
+library("kableExtra")
+
+DATA <- readRDS(here("data","data_clean.rds"))
+
+InlineNum <- function(x){
+  format(x,big.mark=",")
+}
+
+library("sjPlot")
+
+```
+
+## Dictionary
+
+
+
+## Overview
+
+A primary and secondary research question, as well as a sample validation.
+
+### Data summary
+
+There are `r InlineNum(NROW(DATA))` data has been collected across multiple regions (names anonymised). The following table shows the number of observations per region, noting that there may be missing data.
+
+```{r}
+XTABS <- xtabs( ~ Region + 1, data=DATA )
+kable(XTABS)
+```
+
+## Primary question
+
+
+### Indepentent MH/PH
+
+```{r}
+
+GLM <- glm( I(Belief=="Y") ~ 1 + PH + MH, family=binomial(link=logit),data=DATA)
+tab_model(GLM)
+```
+
+### Joint MH/PH
+
+```{r}
+
+DATA$Health <- factor((DATA$PH=="Y")|(DATA$MH=="Y"),levels=c(FALSE,TRUE),labels=c("No issues","Health issues"))
+
+if( 0 ) {
+  ## check that derived health variable is coherent
+  ftable(xtabs(~PH+MH+Health,data=DATA))
+}
+```
+
+## Secondary question
+
+```{r}
+
+GLM2 <- glm( I(Belief=="Y") ~ 1 + Health, family=binomial(link=logit),data=DATA)
+tab_model(GLM2)
+
+```
+
+
+## Sample validation
