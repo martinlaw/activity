@@ -57,4 +57,4 @@ data$MH <- as.factor(data$MH)
 data$SES5 <- as.factor(data$SES5)
 data$Gender <- as.factor(data$Gender)
 
-data <- saveRDS(here("data", "data_clean.rds"))
+saveRDS(data, here("data", "data_clean.rds"))
